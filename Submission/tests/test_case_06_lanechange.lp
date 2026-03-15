@@ -6,11 +6,12 @@
 % Expected output: result(ok(rule3_lane_change, passed))
 
 vehicle(v1).
-lane(l1,l2).
-performs_lane_change(v1).
+lane(l1).
+lane(l2).
+performs_lane_change(v1, l1, l2).
 sufficient_visibility(v1).
-signalled_before(v1, lane_change(l2)).
-signalled_during(v1, lane_change(l2)).
+signalled_before(v1, lane_change(l1, l2)).
+signalled_during(v1, lane_change(l1, l2)).
 
 
 result(ok(rule3_lane_change, passed)) :-

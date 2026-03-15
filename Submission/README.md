@@ -96,9 +96,13 @@ d) überholende mehrspurige Fahrzeuge; es darf jedoch überholt werden www.ris.b
 6. Lane change is performed savely and correct; StVO § 11  
 7. Violating the need to signal before lane change; StVO § 11  
 8. Vehicle wants to perform an unsafe lanechange; StVO § 11
-10. Priority at intersections (compliant); StVO § 19  
-11. Priority at intersections (violation); StVO § 19  
-12. Prohibited overtaking (compliant); StVO § 16  
+9. Vehicle turn right into a blocked road without signaling; VCoRT Art. 14
+10. Priority at intersections is perfomed correctly; StVO § 19  
+11. Priority at intersections is violated; StVO § 19  
+12. Priority of flowing traffic is violated by cyclist; StVO 19
+13. Prohibited overtaking (compliant); StVO § 16  
+
+
 13. Prohibited overtaking (violation: poor visibility); StVO § 16  
 14. Combined rules (speed + following distance) (compliant); StVO § 20 and StVO § 18 Abs. 1  
 15. Combined rules (speed + following distance) (violation); StVO § 20 and StVO § 18 Abs. 1  

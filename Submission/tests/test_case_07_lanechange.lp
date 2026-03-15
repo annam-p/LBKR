@@ -7,9 +7,10 @@
 
 vehicle(v1).
 lane(l1).
-performs_lane_change(v1, l1).
+lane(l2).
+performs_lane_change(v1, l1, l2).
 sufficient_visibility(v1).
-signalled_during(v1, lane_change(l1)).
+signalled_during(v1, lane_change(l1, l2)).
 
 result(ok(rule3_lane_change, passed)) :-
     not violation(_, _).

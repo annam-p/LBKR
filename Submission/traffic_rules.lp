@@ -53,37 +53,45 @@ violation(Vehicle, maneuver_without_continuous_signal) :-
   performs_maneuver(Vehicle, Maneuver),
   not signalled_during(Vehicle, Maneuver).
 
+performs_maneuver(Vehicle, lane_change(CurrentLane, TargetLane)) :-
+  performs_lane_change(Vehicle, CurrentLane, TargetLane).
+
+performs_maneuver(Vehicle, left_turn(Road)) :-
+  performs_left_turn(Vehicle, Road).
+
+performs_maneuver(Vehicle, right_turn(Road)) :-
+  performs_right_turn(Vehicle, Road).
+
+performs_maneuver(Vehicle, turn_around(Road)) :-
+  performs_turn_around(Vehicle, Road).
+
+
 violation(Vehicle, unsafe_to_perform_maneuver) :-
-  performs_lane_change(Vehicle, TargetLane),
-  not safe_to_change_lane(Vehicle, TargetLane).
+  performs_lane_change(Vehicle, CurrentLane, TargetLane),
+  not safe_to_change_lane(Vehicle, CurrentLane, TargetLane).
 
 violation(Vehicle, unsafe_to_perform_maneuver) :-
-  performs_turn(Vehicle),
-  not safe_to_perform_turn(Vehicle).
+  performs_left_turn(Vehicle, Road),
+  not safe_to_perform_turn(Vehicle, Road).
+
+violation(Vehicle, unsafe_to_perform_maneuver) :-
+  performs_right_turn(Vehicle, Road),
+  not safe_to_perform_turn(Vehicle, Road).
+
+violation(Vehicle, unsafe_to_perform_maneuver) :-
+  performs_turn_around(Vehicle, Road),
+  not safe_to_perform_turn(Vehicle, Road).
 
 
-performs_maneuver(Vehicle, lane_change(TargetLane)) :-
-  performs_lane_change(Vehicle, TargetLane).
-
-performs_maneuver(Vehicle, left_turn) :-
-  performs_left_turn(Vehicle).
-
-performs_maneuver(Vehicle, right_turn) :-
-  performs_right_turn(Vehicle).
-
-performs_maneuver(Vehicle, turn_around) :-
-  performs_turn_around(Vehicle).
-
-performs_turn(Vehicle) :-
-  performs_left_turn(Vehicle);
-  performs_right_turn(Vehicle);
-  performs_turn_around(Vehicle).
-
-
-safe_to_change_lane(Vehicle, TargetLane) :-
-  lane(TargetLane),
+safe_to_change_lane(Vehicle, CurrentLane, TargetLane) :-
+  valid_lane_change(CurrentLane, TargetLane),
   sufficient_visibility(Vehicle),
   not lane_blocked(TargetLane).
+
+valid_lane_change(CurrentLane, TargetLane) :-
+  lane(CurrentLane),
+  lane(TargetLane),
+  CurrentLane != TargetLane.
 
 lane_blocked(TargetLane) :-
   lane(TargetLane),
@@ -93,17 +101,18 @@ lane_blocked(TargetLane) :-
   lane(TargetLane),
   approaching_vehicle(Vehicle2, TargetLane).
 
-safe_to_perform_turn(Vehicle) :-
-  performs_turn(Vehicle),
-  not turn_into_blocked_road(Vehicle),
+safe_to_perform_turn(Vehicle, Road) :-
+  performs_turn(Vehicle, Road),
+  road(Road),
+  not turn_into_blocked_road(Vehicle, Road),
   not violates_intersection_priority(Vehicle, _).
 
-turn_into_blocked_road(Vehicle) :-
-  turning_into(Vehicle, Road),
+turn_into_blocked_road(Vehicle, Road) :-
+  performs_turn(Vehicle, Road),
   vehicle_on_road(_, Road).
 
-turn_into_blocked_road(Vehicle) :-
-  turning_into(Vehicle, Road),
+turn_into_blocked_road(Vehicle, Road) :-
+  performs_turn(Vehicle, Road),
   obstacle_on_road(Road).
 
 violates_intersection_priority(Vehicle1, Intersection) :-
@@ -116,57 +125,59 @@ violates_intersection_priority(Vehicle1, Intersection) :-
 % Priority at intersections 
 % StVO §19, VCoRT Art. 18(4)
 % By default the vehicle comming from the right has priority. But under different circumstances (e.g. Roadsigns) this might change. 
-has_priority(A, B, Intersection) :-
-  approaching_intersection(A, Intersection),
-  approaching_intersection(B, Intersection),
-  approaches_from_right(A, B, Intersection),
-  not exception_priority(B, A, Intersection).
+has_priority(Vehicle1, Vehicle2, Intersection) :-
+  approaching_intersection(Vehicle1, Intersection),
+  approaching_intersection(Vehicle2, Intersection),
+  approaches_from_right(Vehicle1, Vehicle2, Intersection),
+  not exception_priority(Vehicle2, Vehicle1, Intersection).
 
-give_way(B, A, Intersection) :- has_priority(A, B, Intersection).
-
-% Priority exceptions
-exception_priority(B, A, Intersection) :-
-  emergency_vehicle(B),
-  approaching_intersection(B, Intersection),
-  approaching_intersection(A, Intersection).
-
-exception_priority(B, A, Intersection) :-
-  rail_vehicle(B),
-  approaching_intersection(B, Intersection),
-  approaching_intersection(A, Intersection).
-
-exception_priority(B, A, Intersection) :-
-  on_priority_road(B, Intersection),
-  approaching_intersection(A, Intersection).
-
-exception_priority(B, A, Intersection) :-
-  has_stop_sign(A, Intersection),
-  approaching_intersection(B, Intersection).
-
-exception_priority(B, A, Intersection) :-
-  has_yield_sign(A, Intersection),
-  approaching_intersection(B, Intersection).
-
-exception_priority(B, A, Intersection) :-
-  entering_from_side_lane(B, Intersection),
-  flowing_traffic(A, Intersection).
-
-exception_priority(B, A, Intersection) :-
-  leaving_cycle_path(B, Intersection),
-  flowing_traffic(A, Intersection).
+% give_way(Vehicle2, Vehicle1, Intersection) :- has_priority(Vehicle1, Vehicle2, Intersection).
 
 violation(Vehicle, failed_to_yield_at_intersection) :-
   proceeds(Vehicle, Intersection),
-  give_way(Vehicle, _, Intersection).
+  not has_priority(_, Vehicle, Intersection).
+
+% Priority exceptions
+exception_priority(Vehicle2, Vehicle1, Intersection) :-
+  emergency_vehicle(Vehicle2),
+  approaching_intersection(Vehicle2, Intersection),
+  approaching_intersection(Vehicle1, Intersection).
+
+exception_priority(Vehicle2, Vehicle1, Intersection) :-
+  rail_vehicle(Vehicle2),
+  approaching_intersection(Vehicle2, Intersection),
+  approaching_intersection(Vehicle1, Intersection).
+
+exception_priority(Vehicle2, Vehicle1, Intersection) :-
+  on_priority_road(Vehicle2, Intersection),
+  approaching_intersection(Vehicle1, Intersection).
+
+exception_priority(Vehicle2, Vehicle1, Intersection) :-
+  has_stop_sign(Vehicle1, Intersection),
+  approaching_intersection(Vehicle2, Intersection).
+
+exception_priority(Vehicle2, Vehicle1, Intersection) :-
+  has_yield_sign(Vehicle1, Intersection),
+  approaching_intersection(Vehicle2, Intersection).
+
+exception_priority(Vehicle2, Vehicle1, Intersection) :-
+  entering_from_side_lane(Vehicle2, Intersection),
+  flowing_traffic(Vehicle1, Intersection).
+
+exception_priority(Vehicle2, Vehicle1, Intersection) :-
+  Bicycle = Vehicle2,
+  leaving_cycle_path(Bicycle, Intersection),
+  flowing_traffic(Vehicle1, Intersection).
+
 
 % Prohibited overtaking 
 % StVO §16
 % A driver must only overtake if it is save and if he can ensure to not violate speeding limits, still needing as little time as possible
 % no overtaking signs
 
-violation(Vehicle, overtaking_no_overtaking_sign) :-
+violation(Vehicle, overtaking_at_no_overtaking_sign) :-
   overtakes(Vehicle, _),
-  overtaking_sign(Road).
+  no_overtaking_sign(Road).
 
 % overtaking at protected crossings or intersections
 violation(Vehicle, overtaking_on_crossing) :-
@@ -193,7 +204,7 @@ violation(Vehicle, overtaking_insufficient_space) :-
 
 violation(Vehicle1, overtaking_speed_difference_too_small) :-
   overtakes(Vehicle1, Vehicle2),
-  speed_difference_too_small(Vehicle1, Vehicle2).
+  insufficient_speed_difference(Vehicle1, Vehicle2).
 
 speed_difference_too_small(Follower, Leader) :-
   speed(Follower, SpeedFollower),
@@ -202,12 +213,8 @@ speed_difference_too_small(Follower, Leader) :-
 
 violation(Vehicle, overtaking_unsafe_reentry) :-
   overtakes(Vehicle, O),
-  unsafe_reentry_after_overtake(Vehicle, O).
+  not safe_reentry_after_overtake(Vehicle, O).
 
-violation(Vehicle, overtaking_poor_visibility) :-
+violation(Vehicle, overtaking_insufficient_visibility) :-
   overtakes(Vehicle, _),
-  poor_visibility(Vehicle).
-
-violation(Vehicle, overtaking_blind_bend_or_crest) :-
-  overtakes(Vehicle, _),
-  blind_bend_or_crest(Vehicle).
+  not sufficient_visibility(Vehicle).

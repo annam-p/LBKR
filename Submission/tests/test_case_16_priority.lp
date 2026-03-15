@@ -7,11 +7,12 @@
 
 vehicle(a;b;c).
 
-performs_lane_change(c, l2).
+performs_lane_change(c, l1, l2).
+lane(l1).
 lane(l2).
 sufficient_visibility(c).
-signalled_before(c, lane_change(l2)).
-signalled_during(c, lane_change(l2)).
+signalled_before(c, lane_change(l1, l2)).
+signalled_during(c, lane_change(l1, l2)).
 
 traffic_keeps(right).
 approaching_intersection(a, i1).

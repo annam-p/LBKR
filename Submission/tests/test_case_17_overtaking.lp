@@ -13,10 +13,11 @@ approaching_intersection(b, i1).
 approaches_from_right(a, b, i1).
 proceeds(b, i1).
 
-performs_lane_change(c, l2).
+performs_lane_change(c, l1, l2).
+lane(l1).
 lane(l2).
 sufficient_visibility(c).
-signalled_before(c, lane_change(l2)).
+signalled_before(c, lane_change(l1, l2)).
 
 overtakes(a, b).
 poor_visibility(a).

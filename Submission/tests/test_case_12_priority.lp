@@ -2,14 +2,15 @@
 
 % Priority at intersections
 % StVO § 19
-% Scenario: Vehicle b yields correctly to vehicle a from the right.
-% Expected output: result(ok(rule4_priority, passed))
+% Scenario: Bicycle does not give way when leaving cycle path.
+% Expected output: result(violation(rule4_priority, failed_to_yield_at_intersection))
 
 vehicle(v_a; v_b).
-intersections(i1).
+intersection(i1).
 approaching_intersection(v_a, i1).
 approaching_intersection(v_b, i1).
-approaches_from_right(v_a, v_b, i1).
+leaving_cycle_path(v_b, i1).
+proceeds(v_b, i1).
 
 
 result(ok(rule4_priority, passed)) :-
