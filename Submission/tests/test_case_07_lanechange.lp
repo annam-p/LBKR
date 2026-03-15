@@ -2,13 +2,14 @@
 
 % Lane change safety and signalling
 % StVO § 11
-% Scenario: A lane change is performed without signalling before the action.
-% Expected output: result(violation(rule3_lane_change, lane_change_without_continuous_signal))
+% Scenario: A lane change is performed savely but the driver did not indicate it beforehand.
+% Expected output: result(violation(rule3_lane_change, maneuver_without_previous_signal))
 
 vehicle(v1).
-lane(l2).
+lane(l1).
 performs_lane_change(v1, l1).
-signalled_during(v1, lane_change).
+sufficient_visibility(v1).
+signalled_during(v1, lane_change(l1)).
 
 result(ok(rule3_lane_change, passed)) :-
     not violation(_, _).

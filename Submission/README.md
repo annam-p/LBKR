@@ -31,7 +31,7 @@ VCoRT Art. 13(5) Speed and Distance Between Vehicles
 5. The driver of a vehicle moving behind another vehicle shall keep at a sufficient distance from that other vehicle to avoid collision if the vehicle in front should suddenly slow down or stop.
 
 ### 3. Lane change safety and signalling; StVO § 11 and VCoRT Art. 14(1, 3)
-Before a driver changes direction or lane, he/she has to ensuring that it can be done safely without endangering or obstructing others. The driver must signal his intention early and clearly via signaling lights or handsigns or using a signalsticks and keep signaling during the manoeuvre. The signaling should only stopping once the manoevre is completed or abandoned. If a lane is blocked or it ends the zipper merge approach should be used where drives merge alternating into 1 lane. 
+Before a driver changes direction or lane, he/she has to ensuring that it can be done safely without endangering or obstructing others. The driver must signal his intention early and clearly via signaling lights or handsigns or using a signalsticks and keep signaling during the maneuver. The signaling should only stopping once the maneuver is completed or abandoned. If a lane is blocked or it ends the zipper merge approach should be used where drives merge alternating into 1 lane. 
 
 #### Verbatim Copy
 StVO § 11. Änderung der Fahrtrichtung und Wechsel des Fahrstreifens. 
@@ -41,9 +41,9 @@ StVO § 11. Änderung der Fahrtrichtung und Wechsel des Fahrstreifens.
 (4) Ob und in welcher Weise die Führer von Schienenfahrzeugen die Fahrtrichtungsänderung oder den Wechsel des Fahrstreifens anzuzeigen haben, ergibt sich aus den eisenbahnrechtlichen Vorschriften. 
 (5) Wenn auf Straßen mit mehr als einem Fahrstreifen für die betreffende Fahrtrichtung das durchgehende Befahren eines Fahrstreifens nicht möglich oder nicht zulässig ist oder ein Fahrstreifen endet, ist den am Weiterfahren gehinderten Fahrzeugen der Wechsel auf den zunächst gelegen verbleibenden Fahrstreifen in der Weise zu ermöglichen, dass diese Fahrzeuge jeweils im Wechsel einem auf dem durchgehenden Fahrstreifen fahrenden Fahrzeug nachfolgen können (Reißverschlusssystem). Das Reißverschlusssystem ist auch anzuwenden, wenn die beschriebenen Umstände in Bezug auf einen Radfahrstreifen oder innerhalb des Ortsgebietes auf einen parallel einmündenden Radweg, nach dessen Verlassen der Radfahrer die Fahrtrichtung beibehält, auftreten. 
 
-VCoRT Art. 14(1, 3) General requirements governing manoeuvres 
-1. Any driver wishing to perform a manoeuvre such as pulling out of or into a line of parked vehicles, moving over to the right or to the left on the carriageway, or turning left or right into another road or into a property bordering on the road, shall first make sure that he can do so without risk of endangering other road-users travelling behind or ahead of him or about to pass him, having regard to their position, direction and speed. 
-3. Before turning or before a manoeuvre which involves moving laterally, the driver shall give clear and sufficient warning of his intention by means of the direction-indicator or direction-indicators on his vehicle, or, failing this, by giving if possible an appropriate signal with his arm. Thewarninggivenbythedirection-indicator or direction-indicators shall continue to be given throughout the manoeuvre and shall cease as soon as the manoeuvre is completed.
+VCoRT Art. 14(1, 3) General requirements governing maneuvers 
+1. Any driver wishing to perform a maneuver such as pulling out of or into a line of parked vehicles, moving over to the right or to the left on the carriageway, or turning left or right into another road or into a property bordering on the road, shall first make sure that he can do so without risk of endangering other road-users travelling behind or ahead of him or about to pass him, having regard to their position, direction and speed. 
+3. Before turning or before a maneuver which involves moving laterally, the driver shall give clear and sufficient warning of his intention by means of the direction-indicator or direction-indicators on his vehicle, or, failing this, by giving if possible an appropriate signal with his arm. Thewarninggivenbythedirection-indicator or direction-indicators shall continue to be given throughout the maneuver and shall cease as soon as the maneuver is completed.
 
 ### 4. Priority at intersections; StVO § 19 and VCoRT Art. 18(4)
 By default, vehicles coming from the right have priority, while rail vehicles have priority even if coming from the left, and emergency vehicles always have priority. Priority also follows priority roads and traffic signs. “Yield” and “Stop” require yielding and/or stopping. Generally, vehicles going straight or turning right have priority over oncoming vehicles turning left, and flowing traffic has priority over vehicles entering from side lanes or other intersecting roads. Cyclists leaving a cycle path must also yield to flowing traffic. A driver who must yield may not force others to brake or swerve, and although priority can be waived, it must be clearly communicated and may not be assumed unless unmistakable stated.
@@ -94,20 +94,18 @@ d) überholende mehrspurige Fahrzeuge; es darf jedoch überholt werden www.ris.b
 4. Following distance violation; StVO § 18 Abs. 1  
 5. Valid following distance; StVO § 18 Abs. 1  
 6. Lane change is performed savely and correct; StVO § 11  
-7. Lane change safety and signalling (violation); StVO § 11  
-
-7. Priority at intersections (compliant); StVO § 19  
-
-8. Priority at intersections (violation); StVO § 19  
-
-9. Prohibited overtaking (compliant); StVO § 16  
-
-10. Prohibited overtaking (violation); StVO § 16  
-
-11. Combined rules (speed + following distance) (compliant); StVO § 20 and StVO § 18 Abs. 1  
-
-12. Combined rules (speed + following distance) (violation); StVO § 20 and StVO § 18 Abs. 1  
-
-13. Combined rules (lane change + priority + overtaking) (compliant); StVO § 11, StVO § 19, StVO § 16  
-
-14. Combined rules (lane change + priority + overtaking) (violation); StVO § 11, StVO § 19, StVO § 16  
+7. Violating the need to signal before lane change; StVO § 11  
+8. Vehicle wants to perform an unsafe lanechange; StVO § 11
+10. Priority at intersections (compliant); StVO § 19  
+11. Priority at intersections (violation); StVO § 19  
+12. Prohibited overtaking (compliant); StVO § 16  
+13. Prohibited overtaking (violation: poor visibility); StVO § 16  
+14. Combined rules (speed + following distance) (compliant); StVO § 20 and StVO § 18 Abs. 1  
+15. Combined rules (speed + following distance) (violation); StVO § 20 and StVO § 18 Abs. 1  
+16. Combined rules (lane change + priority + overtaking) (compliant); StVO § 11, StVO § 19, StVO § 16  
+17. Combined rules (lane change + priority + overtaking) (violation); StVO § 11, StVO § 19, StVO § 16  
+18. Combined rules (speed + lane change) (compliant); StVO § 20 and StVO § 11  
+19. Combined rules (speed + lane change) (violation); StVO § 20 and StVO § 11  
+20. Combined rules (priority exception + overtaking) (compliant); StVO § 19 and StVO § 16  
+21. Combined rules (priority + overtaking) (violation); StVO § 19 and StVO § 16  
+22. Prohibited overtaking (violation: speed difference too small); StVO § 16  

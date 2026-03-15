@@ -2,7 +2,7 @@
 
 % Following distance
 % StVO § 18 Abs. 1
-% Scenario: A following vehicle keeps sufficient distance to the vehicle in front.
+% Scenario: A vehicle keeps sufficient distance to the vehicle in front.
 % Expected output: result(ok(rule2_following_distance, passed))
 
 vehicle(v1;v2).

@@ -2,7 +2,7 @@
 
 % Following distance
 % StVO § 18 Abs. 1
-% Scenario: A following vehicle keeps too little distance to the vehicle in front.
+% Scenario: A vehicle keeps too little distance to the vehicle in front.
 % Expected output: result(violation(rule2_following_distance, insufficient_following_distance))
 
 vehicle(v1;v2).

@@ -2,7 +2,7 @@
 
 % Speed limits and abnormally slow driving
 % StVO § 20
-% Scenario: A vehicle exceeds the applicable speed limit.
+% Scenario: A vehicle exceeds the applicable speed limit (driving 55 in a 50 zone).
 % Expected output: result(violation(rule1_speed, speeding))
 
 vehicle(v1).
