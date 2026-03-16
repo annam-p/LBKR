@@ -101,15 +101,15 @@ d) überholende mehrspurige Fahrzeuge; es darf jedoch überholt werden www.ris.b
 11. Priority at intersections is violated; StVO § 19  
 12. Priority of flowing traffic is violated by cyclist; StVO 19
 13. Prohibited overtaking (compliant); StVO § 16  
+14. Overtaking allowed but not other requirements met; StVO § 16
+15. Combined: valid following distance but one vehicle is speeding; StVO § 20 and StVO § 18 Abs. 1  
+16. Combined: overtaken while not violating speed limits but no enough speed difference; StVO § 20 and StVO § 16 
+17. Combined: overtaking at intersection ; StVO § 19 and StVO § 16  
+18. Combined: overtake a vehicle but can not enter savely as the overtaken one is to close to his front driver; StVO § 18 Abs. 1  and StVO § 16 
+19. Combined: speeding and changing lane but the target lane is the same as the current lane; StVO § 20 and StVO § 11
+20. Combined: vehicle a turns left, takes priority and violates speeding and signaling; StVO § 20  and StVO § 11 StVO § 19
+21. Combined: follower keeps insufficient distance and another vehicle overtakes with insufficient space; StVO § 16 
+22. Combined: overtaking at intersection with violating speed limits and taking priority; StVO § 20 and StVO § 16 and StVO § 19
 
 
-13. Prohibited overtaking (violation: poor visibility); StVO § 16  
-14. Combined rules (speed + following distance) (compliant); StVO § 20 and StVO § 18 Abs. 1  
-15. Combined rules (speed + following distance) (violation); StVO § 20 and StVO § 18 Abs. 1  
-16. Combined rules (lane change + priority + overtaking) (compliant); StVO § 11, StVO § 19, StVO § 16  
-17. Combined rules (lane change + priority + overtaking) (violation); StVO § 11, StVO § 19, StVO § 16  
-18. Combined rules (speed + lane change) (compliant); StVO § 20 and StVO § 11  
-19. Combined rules (speed + lane change) (violation); StVO § 20 and StVO § 11  
-20. Combined rules (priority exception + overtaking) (compliant); StVO § 19 and StVO § 16  
-21. Combined rules (priority + overtaking) (violation); StVO § 19 and StVO § 16  
-22. Prohibited overtaking (violation: speed difference too small); StVO § 16  
+

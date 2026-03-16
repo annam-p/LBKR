@@ -3,7 +3,7 @@
 % Priority at intersections
 % StVO § 19
 % Scenario: Vehicle b comes from the right but has a stopsign and still proceeds.
-% Expected output: result(violation(rule4_priority, failed_to_yield_at_intersection))
+% Expected output: result(violation(rule4_priority, v_b, failed_to_yield_at_intersection))
 
 vehicle(v_a; v_b).
 intersection(i1).
@@ -17,7 +17,7 @@ proceeds(v_b, i1).
 result(ok(rule4_priority, passed)) :-
     not violation(_, _).
 
-result(violation(rule4_priority, Reason)) :-
-    violation(_, Reason).
+result(violation(rule4_priority, Vehicle, Reason)) :-
+    violation(Vehicle, Reason).
 
 #show result/1.

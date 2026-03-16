@@ -131,11 +131,11 @@ has_priority(Vehicle1, Vehicle2, Intersection) :-
   approaches_from_right(Vehicle1, Vehicle2, Intersection),
   not exception_priority(Vehicle2, Vehicle1, Intersection).
 
-% give_way(Vehicle2, Vehicle1, Intersection) :- has_priority(Vehicle1, Vehicle2, Intersection).
 
 violation(Vehicle, failed_to_yield_at_intersection) :-
   proceeds(Vehicle, Intersection),
-  not has_priority(_, Vehicle, Intersection).
+  has_priority(Other, Vehicle, Intersection),
+  Other != Vehicle.
 
 % Priority exceptions
 exception_priority(Vehicle2, Vehicle1, Intersection) :-
@@ -180,40 +180,36 @@ violation(Vehicle, overtaking_at_no_overtaking_sign) :-
   no_overtaking_sign(Road).
 
 % overtaking at protected crossings or intersections
-violation(Vehicle, overtaking_on_crossing) :-
+violation(Vehicle, overtaking_on_intersection) :-
   overtakes(Vehicle, _),
-  on_crossing(Vehicle),
-  not crossing_signal_controlled(Vehicle).
+  on_intersection(Vehicle, Intersection),
+  not intersection_signal_controlled(Vehicle, Intersection).
 
-violation(Vehicle, overtaking_before_crossing) :-
+violation(Vehicle, overtaking_before_uncontrolled_intersection) :-
   overtakes(Vehicle, _),
-  before_crossing(Vehicle),
-  not crossing_signal_controlled(Vehicle).
-
-violation(Vehicle, overtaking_at_uncontrolled_intersection) :-
-  overtakes(Vehicle, _),
-  at_uncontrolled_intersection(Vehicle).
+  approaching_intersection(Vehicle, Intersection),
+  not intersection_signal_controlled(Vehicle, Intersection).
 
 violation(Vehicle, overtaking_endangers_others) :-
-  overtakes(Vehicle, O),
-  may_endanger(Vehicle, O).
+  overtakes(Vehicle, _),
+  may_endanger(Vehicle, _).
 
 violation(Vehicle, overtaking_insufficient_space) :-
-  overtakes(Vehicle, O),
-  insufficient_space_to_overtake(Vehicle, O).
+  overtakes(Vehicle, _),
+  not sufficient_space_for_overtaking(Vehicle).
 
 violation(Vehicle1, overtaking_speed_difference_too_small) :-
   overtakes(Vehicle1, Vehicle2),
-  insufficient_speed_difference(Vehicle1, Vehicle2).
+  not sufficient_speed_difference(Vehicle1, Vehicle2).
 
-speed_difference_too_small(Follower, Leader) :-
+sufficient_speed_difference(Follower, Leader) :-
   speed(Follower, SpeedFollower),
   speed(Leader, SpeedLeader),
-  (SpeedFollower - SpeedLeader) < 20.
+  (SpeedFollower - SpeedLeader) > 20.
 
 violation(Vehicle, overtaking_unsafe_reentry) :-
-  overtakes(Vehicle, O),
-  not safe_reentry_after_overtake(Vehicle, O).
+  overtakes(Vehicle, _),
+  not safe_reentry_after_overtake(Vehicle).
 
 violation(Vehicle, overtaking_insufficient_visibility) :-
   overtakes(Vehicle, _),

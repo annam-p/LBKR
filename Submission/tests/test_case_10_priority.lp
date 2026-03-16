@@ -15,7 +15,7 @@ approaches_from_right(v_a, v_b, i1).
 result(ok(rule4_priority, passed)) :-
     not violation(_, _).
 
-result(violation(rule4_priority, Reason)) :-
-    violation(_, Reason).
+result(violation(rule4_priority, Vehicle, Reason)) :-
+    violation(Vehicle, Reason).
 
 #show result/1.
